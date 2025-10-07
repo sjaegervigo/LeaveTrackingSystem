@@ -13,18 +13,39 @@ public class Main {
 
         System.out.println(e1);
 
+
         Employee e2 = new Employee("Raul", "raulito@gmail.com");
 
+
+        /*
         System.out.println(e2);
         System.out.println(e1);
 
         System.out.println(Employee.getCount());
 
+         */
         LocalDate newStartDate = LocalDate.of(2025, 10 ,8);
         LocalDate newEndDate = LocalDate.of(2025, 10 ,20);
 
         e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
 
-        System.out.println(e1.consultLastLeaveRequest());
+        System.out.println(e1.getLeaveRequests());
+        System.out.println(e2.getLeaveRequests());
+
+        Manager m = new Manager("Sam");
+        if(m.changeStateOfLeaveRequest(e2)){
+            System.out.println(e2.getLeaveRequestsById(6));
+        } else {
+            System.out.println("The changes have not been accepted");
+        }
+
     }
 }

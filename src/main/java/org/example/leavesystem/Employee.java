@@ -74,8 +74,15 @@ public class Employee {
         this.leaveRequests.add(lr);
     }
 
-    public List<LeaveRequest> consultLeaveRequests(){
+    public List<LeaveRequest> getLeaveRequests(){
         return this.leaveRequests;
+    }
+
+    public LeaveRequest getLeaveRequestsById(Integer leaveRequestId){
+        return this.leaveRequests.stream()
+                .filter(r -> r.getId().equals(leaveRequestId))
+                .findFirst()
+                .orElse(null);
     }
 
     public LeaveRequest consultLastLeaveRequest(){

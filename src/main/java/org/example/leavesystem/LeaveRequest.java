@@ -22,7 +22,7 @@ public class LeaveRequest {
         POSTPONED, // request postponed to another date
         IN_PROGRESS, // employee is in leave
         ENDED // leave terminated
-    };
+    }
 
     public LeaveRequest(){
         this.id = count.incrementAndGet();

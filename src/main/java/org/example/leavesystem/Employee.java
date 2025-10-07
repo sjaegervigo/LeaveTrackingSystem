@@ -1,5 +1,8 @@
 package org.example.leavesystem;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Employee {
@@ -9,6 +12,7 @@ public class Employee {
     private final Integer id;
     private String name;
     private String email;
+    private List<LeaveRequest> leaveRequests = new ArrayList<>();
 
     // Attributes
     public Employee(){
@@ -61,7 +65,20 @@ public class Employee {
 
     // Other methods
 
-    public Integer createLeaveRequest(Integer days){
-        return days;
+    public void createLeaveRequest(LocalDate startDate, LocalDate endDate, String reason){
+        LeaveRequest lr = new LeaveRequest();
+        lr.setStartDate(startDate);
+        lr.setEndDate(endDate);
+        lr.setReason(reason);
+        lr.setRequestingEmployee(this);
+        this.leaveRequests.add(lr);
+    }
+
+    public List<LeaveRequest> consultLeaveRequests(){
+        return this.leaveRequests;
+    }
+
+    public LeaveRequest consultLastLeaveRequest(){
+        return this.leaveRequests.getLast();
     }
 }

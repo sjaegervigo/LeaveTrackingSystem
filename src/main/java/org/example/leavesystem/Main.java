@@ -1,5 +1,7 @@
 package org.example.leavesystem;
 
+import java.time.LocalDate;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -17,5 +19,12 @@ public class Main {
         System.out.println(e1);
 
         System.out.println(Employee.getCount());
+
+        LocalDate newStartDate = LocalDate.of(2025, 10 ,8);
+        LocalDate newEndDate = LocalDate.of(2025, 10 ,20);
+
+        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
+
+        System.out.println(e1.consultLastLeaveRequest());
     }
 }

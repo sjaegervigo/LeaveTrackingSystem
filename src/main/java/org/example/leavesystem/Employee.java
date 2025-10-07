@@ -100,4 +100,16 @@ public class Employee {
     public LeaveRequest consultLastLeaveRequest(){
         return this.leaveRequests.getLast();
     }
+
+    public boolean cancelLeaveRequestById(Integer leaveRequestIndex){
+        LeaveRequest lrToDelete = this.leaveRequests.stream().filter(r -> r.getId().equals(leaveRequestIndex))
+                .findFirst().orElse(null);
+        if(lrToDelete != null){
+            leaveRequests.remove(lrToDelete);
+            return true;
+        } else {
+            System.out.println("There is no a leave request with index "+ leaveRequestIndex);
+            return false;
+        }
+    }
 }

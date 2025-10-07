@@ -40,6 +40,15 @@ public class Manager {
     }
 
     // Other methods
+
+    public void listPendingRequestsForEmployee(Employee employee){
+        System.out.println("Consult pending requests for employee: "+ employee.getId() +" - "+ employee.getName());
+        System.out.println(employee.getLeaveRequests().stream()
+                .filter( r -> r.getState().equals(LeaveRequest.State.SENT))
+                .toList());
+
+    }
+
     public boolean changeStateOfLeaveRequest(Employee employee){
 
         System.out.println("Consulting leave requests of the employee: " + employee.getId() + " - "+ employee.getName());

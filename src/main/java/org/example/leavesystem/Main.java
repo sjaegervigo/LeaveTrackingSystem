@@ -37,15 +37,22 @@ public class Main {
         e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
         e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
 
-        System.out.println(e1.getLeaveRequests());
-        System.out.println(e2.getLeaveRequests());
 
         Manager m = new Manager("Sam");
-        if(m.changeStateOfLeaveRequest(e2)){
-            System.out.println(e2.getLeaveRequestsById(6));
+        m.listPendingRequestsForEmployee(e1);
+        if(m.changeStateOfLeaveRequest(e1)){
+            System.out.println(e1.getLeaveRequestsById(1));
         } else {
             System.out.println("The changes have not been accepted");
         }
+
+        if(m.changeStateOfLeaveRequest(e1)){
+            System.out.println(e1.getLeaveRequestsById(2));
+        } else {
+            System.out.println("The changes have not been accepted");
+        }
+
+        m.listPendingRequestsForEmployee(e1);
 
     }
 }

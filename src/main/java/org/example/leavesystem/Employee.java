@@ -71,7 +71,6 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", leaveBalance=" + leaveBalance +
-                ", leaveRequests=" + leaveRequests +
                 '}';
     }
 

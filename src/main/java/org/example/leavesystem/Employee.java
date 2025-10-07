@@ -12,6 +12,7 @@ public class Employee {
     private final Integer id;
     private String name;
     private String email;
+    private Integer leaveBalance;
     private List<LeaveRequest> leaveRequests = new ArrayList<>();
 
     // Attributes
@@ -19,6 +20,7 @@ public class Employee {
         this.id = count.incrementAndGet();
         this.name = "change name";
         this.email = "change email";
+        this.leaveBalance = 20;
     }
 
     // Constructors
@@ -26,6 +28,7 @@ public class Employee {
         this.id = count.incrementAndGet();
         this.name = name;
         this.email = email;
+        this.leaveBalance = 20;
     }
 
     public Integer getId() {
@@ -53,13 +56,22 @@ public class Employee {
         return count.get();
     }
 
-    // Override toString method
+    public Integer getLeaveBalance(){
+        return this.leaveBalance;
+    }
+
+    public void setLeaveBalance(Integer newBalance){
+        this.leaveBalance = newBalance;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", leaveBalance=" + leaveBalance +
+                ", leaveRequests=" + leaveRequests +
                 '}';
     }
 

@@ -7,52 +7,7 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        Employee e1 = new Employee();
-        e1.setName("Pedro");
-        e1.setEmail("pedrosky@gmail.com");
-
-        System.out.println(e1);
-
-
-        Employee e2 = new Employee("Raul", "raulito@gmail.com");
-
-
-        /*
-        System.out.println(e2);
-        System.out.println(e1);
-
-        System.out.println(Employee.getCount());
-
-         */
-        LocalDate newStartDate = LocalDate.of(2025, 10 ,8);
-        LocalDate newEndDate = LocalDate.of(2025, 10 ,20);
-
-        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e1.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-        e2.createLeaveRequest(newStartDate, newEndDate, "I need vacations to visit my mom, because she is sick");
-
-
-        Manager m = new Manager("Sam");
-        m.listPendingRequestsForEmployee(e1);
-        if(m.changeStateOfLeaveRequest(e1)){
-            System.out.println(e1.getLeaveRequestsById(1));
-        } else {
-            System.out.println("The changes have not been accepted");
-        }
-
-        if(m.changeStateOfLeaveRequest(e1)){
-            System.out.println(e1.getLeaveRequestsById(2));
-        } else {
-            System.out.println("The changes have not been accepted");
-        }
-
-        m.listPendingRequestsForEmployee(e1);
+        System.out.println("Who are you?");
 
     }
 }

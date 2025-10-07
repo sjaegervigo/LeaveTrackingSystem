@@ -5,56 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Employee {
+public class Employee extends User{
 
     // Properties
-    private static final AtomicInteger count = new AtomicInteger(0); //maneja los incrementos de manera segura en contextos multihilo
-    private final Integer id;
-    private String name;
-    private String email;
     private Integer leaveBalance;
     private List<LeaveRequest> leaveRequests = new ArrayList<>();
 
     // Attributes
     public Employee(){
-        this.id = count.incrementAndGet();
-        this.name = "change name";
-        this.email = "change email";
+        super();
         this.leaveBalance = 20;
     }
 
     // Constructors
-    public Employee(String name, String email){
-        this.id = count.incrementAndGet();
-        this.name = name;
-        this.email = email;
+    public Employee(String name, String email, String password){
+        super(name, email, password);
         this.leaveBalance = 20;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public static Integer getCount(){
-        return count.get();
-    }
+    //Getters and setters
 
     public Integer getLeaveBalance(){
         return this.leaveBalance;
@@ -66,10 +35,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+        return "Employee{" + super.toString()+"\n"+
                 ", leaveBalance=" + leaveBalance +
                 '}';
     }

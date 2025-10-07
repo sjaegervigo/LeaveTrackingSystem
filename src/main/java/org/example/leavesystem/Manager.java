@@ -3,39 +3,21 @@ package org.example.leavesystem;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Manager {
-    // to view and change the state of all the leave requests
-    private static final AtomicInteger count = new AtomicInteger(0);
-    private final Integer id;
-    private String name;
+public class Manager extends User{
+
+    // Constructors
 
     public Manager(){
-        this.id = count.incrementAndGet();
-        this.name = "empty name (please set)";
+        super();
     }
 
-    public Manager(String name) {
-        this.id = count.incrementAndGet();
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Manager(String name, String email, String password) {
+        super(name, email, password);
     }
 
     @Override
     public String toString() {
-        return "Manager{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "Manager{" + super.toString()+"\n"+
                 '}';
     }
 
@@ -63,7 +45,7 @@ public class Manager {
             Integer leaveRequestIndex = Integer.parseInt(userOption);
             System.out.println("Choose a new state for this leave request: ");
             for(LeaveRequest.State c : LeaveRequest.State.values()){
-                System.out.println(c.ordinal() + " - " + c);
+                System.out.println(c.ordinal() + " - " + c.name());
             }
             int newStateIndex = Integer.parseInt(sc.nextLine());
             LeaveRequest chosenRequest = employee.getLeaveRequestsById(leaveRequestIndex);

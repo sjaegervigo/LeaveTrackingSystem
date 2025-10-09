@@ -74,12 +74,16 @@ public class LeaveRequest {
     }
 
     public void setStartDate(LocalDate newStartDate){
-        this.startDate = newStartDate;
-        if(this.endDate != null){
-            setDaysRequested(this.startDate, this.endDate);
-            System.out.println("Number of days requested updated!");
+        if(newStartDate.isAfter(this.endDate)){
+            System.out.println("Start date can't be after End date!!! try again");
         } else {
-            System.out.println("Don't forget to set the end date too!");
+            this.startDate = newStartDate;
+            if(this.endDate != null){
+                setDaysRequested(this.startDate, this.endDate);
+                System.out.println("Start and end dates setted succesfully!!\nNumber of days requested updated!");
+            } else {
+                System.out.println("Start date setted succesfully!!\nDon't forget to set the end date too!");
+            }
         }
     }
 
@@ -88,13 +92,18 @@ public class LeaveRequest {
     }
 
     public void setEndDate(LocalDate newEndDate){
-        this.endDate = newEndDate;
-        if(this.startDate != null){
-            setDaysRequested(this.startDate, this.endDate);
-            System.out.println("Number of days requested updated!");
+        if(newEndDate.isBefore(this.startDate)){
+            System.out.println("End date can't be before Start date!!! try again");
         } else {
-            System.out.println("Don't forget to set the start date too!");
+            this.endDate = newEndDate;
+            if(this.startDate != null){
+                setDaysRequested(this.startDate, this.endDate);
+                System.out.println("End and start dates setted succesfully!!\nNumber of days requested updated!");
+            } else {
+                System.out.println("End date setted succesfully!!\nDon't forget to set the start date too!");
+            }
         }
+
     }
 
     public String getReason(){

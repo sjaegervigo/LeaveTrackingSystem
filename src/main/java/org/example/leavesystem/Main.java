@@ -22,11 +22,30 @@ public class Main {
             }
 
             LoginResult result = login(role);
-        } while (role != null);
+            if(result.isGranted()){
+                System.out.println("Loged as " +role);
+                System.out.println("Welcome " + result.getUser().getName() + "!");
+                if(role.equals("Employee")){
+                    showEmployeeMenu((Employee) result.getUser());
+                } else if(role.equals("Manager")){
+                    //showManagerMenu();
+                }
+            } else {
+                System.out.println("Email or password incorrect for rol " + role);
+            }
+        } while (true);
+    }
+
+    public static void showEmployeeMenu(Employee logedEmployee){
+        System.out.println();
     }
 
     public static LoginResult login(String role){
-        return new LoginResult(false, null);
+        System.out.println("Enter your email");
+        String email = sc.nextLine();
+        System.out.println("Enter your password");
+        String password = sc.nextLine();
+        return authService.login(email, password, role);
     }
 
     public static void loadData(){
@@ -40,19 +59,28 @@ public class Main {
         System.out.println("2. Manager");
         System.out.println("-------------");
         System.out.println("0. Exit");
-        int option = Integer.parseInt(sc.nextLine());
+        try{
+            int option = Integer.parseInt(sc.nextLine());
+            return switch (option){
+                case 1 -> "Employee";
+                case 2 -> "Manager";
+                case 0 -> null;
+                default -> {
+                    System.out.println("Invalid option");
+                    yield askForRol();
+                }
+            };
 
-        return switch (option){
-            case 1 -> "Employee";
-            case 2 -> "Manager";
-            case 0 -> null;
-            default -> {
-                System.out.println("Invalid option");
-                yield askForRol();
-            }
-        };
+        } catch (NumberFormatException e){
+            System.out.println( "\n++++++++++++++++++++++++++++++++++++++\n"+
+                                "++ Exception catched!!              ++\n"+
+                                "++ Cause:                           ++\n"+
+                                "++ "+e.getMessage()+   "            ++\n"+
+                                "++++++++++++++++++++++++++++++++++++++\n");
+            askForRol();
+        } finally {
 
+        }
+        return null;
     }
-
-
 }

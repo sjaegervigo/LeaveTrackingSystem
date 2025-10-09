@@ -18,4 +18,11 @@ public class LoginResult {
         return this.user;
     }
 
+    @Override
+    public String toString() {
+        return "LoginResult{" +
+                "granted=" + granted +
+                ", user=" + user +
+                '}';
+    }
 }
